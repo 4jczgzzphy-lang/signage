@@ -1,6 +1,44 @@
-<!DOCTYPE html>
-<html>
-<body>
-OK
-</body>
-</html>
+<script>
+function show() {
+  const now = new Date();
+  const h = now.getHours();
+  const m = now.getMinutes();
+  const c = document.getElementById("content");
+
+  // 1. 10:00–10:59
+  if (h === 10) {
+    c.innerHTML = `<img src="a.jpg">`;
+  }
+  // 2. 11:00–12:59
+  else if (h === 11 || h === 12) {
+    c.innerHTML = `<img src="b.jpg">`;
+  }
+  // 3. 13:00–15:29
+  else if (h === 13 || h === 14 || (h === 15 && m < 30)) {
+    c.innerHTML = `<video autoplay loop muted><source src="c.mp4"></video>`;
+  }
+  // 4. 15:30–17:29
+  else if ((h === 15 && m >= 30) || h === 16 || (h === 17 && m < 30)) {
+    c.innerHTML = `<video autoplay loop muted><source src="d.mp4"></video>`;
+  }
+  // 5. 17:30–20:59
+  else if ((h === 17 && m >= 30) || h === 18 || h === 19 || h === 20) {
+    c.innerHTML = `<img src="e.jpg">`;
+  }
+  // 6. 21:00–22:29
+  else if (h === 21 || (h === 22 && m < 30)) {
+    c.innerHTML = `<video autoplay loop muted><source src="f.mp4"></video>`;
+  }
+  // 7. 22:30–23:59
+  else if (h === 22 && m >= 30 || h === 23) {
+    c.innerHTML = `<img src="g.jpg">`;
+  }
+  // 8. 0:00–9:59
+  else {
+    c.innerHTML = `<img src="h.jpg">`;
+  }
+}
+
+show();
+setInterval(show, 60 * 1000); // 1分ごとに切替チェック
+</script>
